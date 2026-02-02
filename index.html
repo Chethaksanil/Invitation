@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>One Tiny Question 🥺</title>
+
+  <!-- IMPORTANT FOR MOBILE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 420px;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .subtext {
+      font-size: 0.95rem;
+      color: #777;
+      margin-bottom: 55px;
+    }
+
+    button {
+      padding: 16px 36px;
+      font-size: 1rem;
+      border-radius: 35px;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      touch-action: manipulation;
+      transition: transform 0.2s ease;
+    }
+
+    #yes {
+      background: #ff4d88;
+      color: white;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 25px;
+    }
+
+    #no {
+      background: #ddd;
+      color: black;
+    }
+
+    /* Loading screen */
+    .loading {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 1.4rem;
+      z-index: 999;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .dots::after {
+      content: '';
+      animation: dots 1.5s infinite;
+    }
+
+    @keyframes dots {
+      0% { content: ''; }
+      33% { content: '.'; }
+      66% { content: '..'; }
+      100% { content: '...'; }
+    }
+
+    /* Extra polish for very small phones */
+    @media (max-width: 360px) {
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .subtext {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h2>
+      Chirag 🥺✨<br><br>
+      Are you maybeee coming to Goa with me?
+    </h2>
+
+    <div class="subtext">
+      Just chill vibes, beaches, food<br>
+      and making cute memories 🌴🌊
+    </div>
+
+    <button id="yes">Yus 😌</button>
+    <button id="no">No 🙄</button>
+  </div>
+
+  <div class="loading" id="loading">
+    ✈️ Booking tickets<span class="dots"></span><br><br>
+    🌴 Goa loading good vibes 🌊
+  </div>
+
+  <audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-littleidea.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const music = document.getElementById("music");
+    const loading = document.getElementById("loading");
+
+    let yesScale = 1;
+    let musicStarted = false;
+
+    moveNo();
+
+    function moveNo() {
+      const card = document.querySelector(".card");
+      const maxX = card.offsetWidth - noBtn.offsetWidth;
+      const maxY = card.offsetHeight - noBtn.offsetHeight;
+
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
+    }
+
+    function startMusic() {
+      if (!musicStarted) {
+        music.play();
+        musicStarted = true;
+      }
+    }
+
+    function noAttempt() {
+      startMusic();
+      alert("No seems shy 🙈");
+      yesScale += 0.15;
+      yesBtn.style.transform = `translateX(-50%) scale(${yesScale})`;
+      moveNo();
+    }
+
+    ["mouseover", "mouseenter", "mousedown", "touchstart", "focus"].forEach(evt => {
+      noBtn.addEventListener(evt, noAttempt);
+    });
+
+    noBtn.addEventListener("click", e => {
+      e.preventDefault();
+      noAttempt();
+    });
+
+    yesBtn.addEventListener("click", () => {
+      startMusic();
+      loading.style.display = "flex";
+
+      setTimeout(() => {
+        window.location.href = "thankyou.html";
+      }, 2500);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,43 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>We Did It 🥹</title>
+  <meta charset="UTF-8">
+  <title>We Did It 🥹</title>
 
-<style>
-  body {
-    background: linear-gradient(135deg, #fff0f6, #ffe3ec);
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-  }
+  <!-- IMPORTANT FOR MOBILE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  .box {
-    background: white;
-    padding: 50px;
-    border-radius: 30px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  }
+  <style>
+    body {
+      background: linear-gradient(135deg, #fff0f6, #ffe3ec);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
 
-  h1 {
-    color: #ff4d88;
-  }
-</style>
+    .box {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 30px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      color: #ff4d88;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    /* Small phone polish */
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="box">
-  <h1>YAYYY 🥹💖</h1>
-  <p>
-    Thank you for choosing me for this trip ✨<br><br>
-    Goa + you = elite vibes 🌴😌<br><br>
-    Can’t waittt ✈️🌊
-  </p>
-</div>
+  <div class="box">
+    <h1>YAYYY 🥹💖</h1>
+    <p>
+      Thank you for choosing me for this trip ✨<br><br>
+      Goa + you = elite vibes 🌴😌<br><br>
+      Can’t waittt ✈️🌊
+    </p>
+  </div>
 
 </body>
 </html>
